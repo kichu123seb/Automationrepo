@@ -12,43 +12,51 @@ public class ManageNewsPage {
 	PageUtilities obj = new PageUtilities();
 
 //pom with pagefactory
-	//pagefactory to find elements using @findby
-	
-	@FindBy(xpath = "//section[@class='content']//p[text()='Manage News']")WebElement managenews;
-	@FindBy(xpath ="//p[text()='Manage News']/ancestor::div[contains(@class,'small-box')]//a")WebElement moreinfo;
-	@FindBy(xpath ="//a[@class='btn btn-rounded btn-danger']")WebElement newbutton;
-	@FindBy(xpath ="//textarea[@class='form-control']")WebElement textfield;
-	@FindBy(xpath ="//button[@type='submit']")WebElement savebutton;
-	@FindBy(xpath ="//div[@class='alert alert-success alert-dismissible']")WebElement alert;
+	// pagefactory to find elements using @findby
 
-	
-	
+	@FindBy(xpath = "//section[@class='content']//p[text()='Manage News']")
+	WebElement managenews;
+	@FindBy(xpath = "//p[text()='Manage News']/ancestor::div[contains(@class,'small-box')]//a")
+	WebElement moreinfo;
+	@FindBy(xpath = "//a[@class='btn btn-rounded btn-danger']")
+	WebElement newbutton;
+	@FindBy(xpath = "//textarea[@class='form-control']")
+	WebElement textfield;
+	@FindBy(xpath = "//button[@type='submit']")
+	WebElement savebutton;
+	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
+	WebElement alert;
+
 	public ManageNewsPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
-	
-	
+
 	public boolean isMangeNewsDisplayed() {
 		return managenews.isDisplayed();
-	
+
 	}
+
 	public void MoreInfo() {
 		moreinfo.click();
 	}
+
 	public void NewButton() {
 		newbutton.click();
-		
+
 	}
+
 	public void EnterText(String text) {
 		textfield.sendKeys(text);
 	}
+
 	public void SaveButton() {
 		savebutton.click();
 	}
+
 	public boolean isAlertDisplayed() {
 		return alert.isDisplayed();
-	
+
 	}
-	
+
 }

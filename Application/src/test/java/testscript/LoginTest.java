@@ -1,6 +1,5 @@
 package testscript;
 
-
 import java.io.IOException;
 
 import org.testng.Assert;
@@ -12,84 +11,72 @@ import utilities.ExcelUtilities;
 //hard assertion- if assertion fail execution stop and soft assertion- if fails continue all the case at end assertall.create object.
 
 public class LoginTest extends Base {
-	@Test(priority = 1,groups={"regression"})
+	@Test(priority = 1, groups = { "regression" })
 	public void verifyTheUserIsAbleToLoginWithValidCredentials() throws IOException {
-		//String  username = "admin";
-		//String password ="admin";
+		// String username = "admin";
+		// String password ="admin";
 		String username = ExcelUtilities.getStringData(1, 0, "loginpage");
 		String password = ExcelUtilities.getStringData(1, 1, "loginpage");
 		LoginPage loginpage = new LoginPage(getDriver());
-        // Object creation
-        loginpage.EnterTheUserName(username);
-        loginpage.EnterThePassword(password);
-        loginpage.ClickOnSigninButton();
-        boolean homepage = loginpage.isDashBoardDisplayed();
-        Assert.assertTrue(homepage);
-        //System.out.println(username);
-        //System.out.println(password);
-
-
-        
+		// Object creation
+		loginpage.EnterTheUserName(username);
+		loginpage.EnterThePassword(password);
+		loginpage.ClickOnSigninButton();
+		boolean homepage = loginpage.isDashBoardDisplayed();
+		Assert.assertTrue(homepage);
+		// System.out.println(username);
+		// System.out.println(password);
 
 	}
-	@Test(priority = 2)
+
+	@Test(priority = 2,groups = { "regression" },description = "TestCases for login to the page with 4 combinations ")
 	public void verifyTheUserIsAbleToLoginWithInvalidUserName() throws IOException {
-		//String  username = "admin56";
-		//String password ="admin";
+		// String username = "admin56";
+		// String password ="admin";
 		String username = ExcelUtilities.getStringData(2, 0, "loginpage");
 		String password = ExcelUtilities.getStringData(2, 1, "loginpage");
 		LoginPage loginpage = new LoginPage(getDriver());
-        //LoginPage loginpage = new LoginPage(driver); 
-        // Object creation
-        loginpage.EnterTheUserName(username);
-        loginpage.EnterThePassword(password);
-        loginpage.ClickOnSigninButton();
-        boolean home = loginpage.invalidLogin();
-        Assert.assertTrue(home);
-
-
-        
+		// LoginPage loginpage = new LoginPage(driver);
+		// Object creation
+		loginpage.EnterTheUserName(username);
+		loginpage.EnterThePassword(password);
+		loginpage.ClickOnSigninButton();
+		boolean home = loginpage.invalidLogin();
+		Assert.assertTrue(home);
 
 	}
-	
+
 	@Test(priority = 3)
 	public void verifyTheUserIsAbleToLoginWithInvalidPassword() throws IOException {
-		//String  username = "admin";
-		//String password ="admin123";
+		// String username = "admin";
+		// String password ="admin123";
 		String username = ExcelUtilities.getStringData(3, 0, "loginpage");
 		String password = ExcelUtilities.getStringData(3, 1, "loginpage");
 
-       LoginPage loginpage = new LoginPage(getDriver()); 
-        // Object creation
-        loginpage.EnterTheUserName(username);
-        loginpage.EnterThePassword(password);
-        loginpage.ClickOnSigninButton();
-        boolean homep = loginpage.invalidLogin();
-        Assert.assertTrue(homep);
-
-
-        
+		LoginPage loginpage = new LoginPage(getDriver());
+		// Object creation
+		loginpage.EnterTheUserName(username);
+		loginpage.EnterThePassword(password);
+		loginpage.ClickOnSigninButton();
+		boolean homep = loginpage.invalidLogin();
+		Assert.assertTrue(homep);
 
 	}
+
 	@Test(priority = 4)
 	public void verifyTheUserIsAbleToLoginWithInvalidUserNameAndPassword() throws IOException {
-		//String  username = "admin123";
-		//String password ="admin123";
+		// String username = "admin123";
+		// String password ="admin123";
 		String username = ExcelUtilities.getStringData(4, 0, "loginpage");
 		String password = ExcelUtilities.getStringData(4, 1, "loginpage");
-       LoginPage loginpage = new LoginPage(getDriver()); 
-        // Object creation
-        loginpage.EnterTheUserName(username);
-        loginpage.EnterThePassword(password);
-        loginpage.ClickOnSigninButton();
-        boolean homeee = loginpage.invalidLogin();
-        Assert.assertTrue(homeee);
-
-
-        
+		LoginPage loginpage = new LoginPage(getDriver());
+		// Object creation
+		loginpage.EnterTheUserName(username);
+		loginpage.EnterThePassword(password);
+		loginpage.ClickOnSigninButton();
+		boolean homeee = loginpage.invalidLogin();
+		Assert.assertTrue(homeee);
 
 	}
-	
 
 }
-

@@ -18,15 +18,25 @@ public class ManageCategoryPage {
 	PageUtilities obj = new PageUtilities();
 
 //pom with pagefactory
-	//pagefactory to find elements using @findby
+	// pagefactory to find elements using @findby
+
+	@FindBy(xpath = "//p[normalize-space()='Manage Category']/ancestor::div[contains(@class,'small-box')]")
+	WebElement ManageCategory;
+	@FindBy(xpath = "//p[normalize-space()='Manage Category']/ancestor::div[contains(@class,'small-box')]//a")
+	WebElement manageinfomore;
+	@FindBy(xpath = "//a[@class='btn btn-rounded btn-danger']")
+	WebElement managenew;
+	@FindBy(xpath = "//input[@name='category']")
+	WebElement entercategory;
+	@FindBy(xpath = "//li[@id='134-selectable']")
+	WebElement discount;
+	@FindBy(xpath = "//input[@type='file']")
+	WebElement fileinput;
+	@FindBy(xpath = "//button[@name='create']")
+	WebElement save;
+	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
+	WebElement alert;
 	
-	@FindBy(xpath = "//p[normalize-space()='Manage Category']/ancestor::div[contains(@class,'small-box')]")WebElement ManageCategory;
-	@FindBy(xpath ="//p[normalize-space()='Manage Category']/ancestor::div[contains(@class,'small-box')]//a")WebElement manageinfomore;
-	@FindBy(xpath ="//a[@class='btn btn-rounded btn-danger']")WebElement managenew;
-	@FindBy(xpath ="//input[@name='category']")WebElement entercategory;
-	@FindBy(xpath ="//li[@id='134-selectable']")WebElement discount;
-	@FindBy(xpath ="//input[@type='file']")WebElement fileinput;
-	@FindBy(xpath ="//button[@name='create']")WebElement save;
 	
 	
 
@@ -35,39 +45,44 @@ public class ManageCategoryPage {
 		PageFactory.initElements(driver2, this);
 	}
 
-
 	public boolean isManageCategoryDisplayed() {
 		return ManageCategory.isDisplayed();
 	}
-	 public void moreinfo() {
-		 manageinfomore.click();
-	 }
-	 public void newbutton() {
-		 managenew.click();
-		 
-	 }
-	 public void enterCategory(String text) {
-		 entercategory.sendKeys(text);
-		 
-	 }
-	 
-	 public void discount() {
-		 discount.click();
-		 
-	 }
-	
+
+	public void moreinfo() {
+		manageinfomore.click();
+	}
+
+	public void newbutton() {
+		managenew.click();
+
+	}
+
+	public void enterCategory(String text) {
+		entercategory.sendKeys(text);
+
+	}
+
+	public void discount() {
+		discount.click();
+
+	}
+
 	public void fileInput() {
 		fileinput.sendKeys("C:\\Users\\adars\\Pictures\\Screenshots\\Screenshot 2026-03-09 174732.png");
-		
+
 	}
-	
+
 	public void savebutton() {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-	    js.executeScript("arguments[0].scrollIntoView(true);", save);
+		js.executeScript("arguments[0].scrollIntoView(true);", save);
 
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-	    wait.until(ExpectedConditions.elementToBeClickable(save));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.elementToBeClickable(save));
 		save.click();
+	}
+	public boolean isAlertDisplayed() {
+		return alert.isDisplayed();
 	}
 
 }
