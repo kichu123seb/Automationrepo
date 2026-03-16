@@ -11,7 +11,7 @@ import utilities.ExcelUtilities;
 //hard assertion- if assertion fail execution stop and soft assertion- if fails continue all the case at end assertall.create object.
 
 public class LoginTest extends Base {
-	@Test(priority = 1, groups = { "regression" })
+	@Test(priority = 1, groups = { "regression" },description = "TestCase for checking valid login ")
 	public void verifyTheUserIsAbleToLoginWithValidCredentials() throws IOException {
 		// String username = "admin";
 		// String password ="admin";
@@ -29,7 +29,7 @@ public class LoginTest extends Base {
 
 	}
 
-	@Test(priority = 2,groups = { "regression" },description = "TestCases for login to the page with 4 combinations ")
+	@Test(priority = 2,groups = { "regression" },description = "TestCase for checking invalid username login ")
 	public void verifyTheUserIsAbleToLoginWithInvalidUserName() throws IOException {
 		// String username = "admin56";
 		// String password ="admin";
@@ -46,7 +46,7 @@ public class LoginTest extends Base {
 
 	}
 
-	@Test(priority = 3)
+	@Test(priority = 3,description = "TestCase for checking invalid password login ")
 	public void verifyTheUserIsAbleToLoginWithInvalidPassword() throws IOException {
 		// String username = "admin";
 		// String password ="admin123";
@@ -63,7 +63,7 @@ public class LoginTest extends Base {
 
 	}
 
-	@Test(priority = 4)
+	@Test(priority = 4,description = "TestCase for checking invalid username and password login ")
 	public void verifyTheUserIsAbleToLoginWithInvalidUserNameAndPassword() throws IOException {
 		// String username = "admin123";
 		// String password ="admin123";
