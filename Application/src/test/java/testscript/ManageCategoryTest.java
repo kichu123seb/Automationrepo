@@ -4,8 +4,6 @@ import java.io.IOException;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import pages.AdminUserPage;
 import pages.LoginPage;
 import pages.ManageCategoryPage;
 import utilities.ExcelUtilities;
@@ -25,7 +23,7 @@ public class ManageCategoryTest extends Base {
 		managecategory.isManageCategoryDisplayed();
 		managecategory.moreinfo();
 		managecategory.newbutton();
-		managecategory.enterCategory("fruits");
+		managecategory.enterCategory("applean");
 		managecategory.discount();
 		managecategory.fileInput();
 		managecategory.savebutton();

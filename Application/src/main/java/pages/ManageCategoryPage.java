@@ -11,6 +11,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import constant.Constant;
+import utilities.FileUploadUtilities;
 import utilities.PageUtilities;
 
 public class ManageCategoryPage {
@@ -69,7 +71,8 @@ public class ManageCategoryPage {
 	}
 
 	public void fileInput() {
-		fileinput.sendKeys("C:\\Users\\adars\\Pictures\\Screenshots\\Screenshot 2026-03-09 174732.png");
+		FileUploadUtilities upload = new FileUploadUtilities();
+		upload.fileUploaduUsingSendKeys(fileinput, Constant.FILEINPUT);
 
 	}
 
