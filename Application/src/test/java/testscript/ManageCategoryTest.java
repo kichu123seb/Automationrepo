@@ -23,7 +23,7 @@ public class ManageCategoryTest extends Base {
 		managecategory.isManageCategoryDisplayed();
 		managecategory.moreinfo();
 		managecategory.newbutton();
-		managecategory.enterCategory("applean");
+		managecategory.enterCategory("appleand");
 		managecategory.discount();
 		managecategory.fileInput();
 		managecategory.savebutton();
