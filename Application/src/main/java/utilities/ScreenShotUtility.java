@@ -13,7 +13,7 @@ import org.openqa.selenium.io.FileHandler;
 public class ScreenShotUtility {
 	public void getScreenshot(ThreadLocal<WebDriver> driver,String failedtestcases) throws IOException {
 		//convert webdriver to screenshot mode
-		TakesScreenshot scrShot = (TakesScreenshot) driver; 
+		TakesScreenshot scrShot = (TakesScreenshot) driver.get(); 
 		//to capture the screenshot
 	    File screenShot=scrShot.getScreenshotAs(OutputType.FILE);
 	    //create date and time

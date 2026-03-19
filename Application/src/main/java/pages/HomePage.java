@@ -20,6 +20,16 @@ public class HomePage {
 	WebElement logout;
 	@FindBy(xpath = "//button[@type='submit']")
 	WebElement signinbutton;
+	@FindBy(xpath = "//p[normalize-space()='Admin Users']/ancestor::div[contains(@class,'small-box')]//a")
+	WebElement adminmoreinfo;
+	@FindBy(xpath = "//p[normalize-space()='Manage Category']/ancestor::div[contains(@class,'small-box')]//a")
+	WebElement managecategoryinfomore;
+	@FindBy(xpath = "//p[normalize-space()='Manage Contact']/ancestor::div[contains(@class,'small-box')]//a")
+	WebElement managecontactinfomore;
+	@FindBy(xpath = "//p[normalize-space()='Manage Footer Text']/ancestor::div[contains(@class,'small-box')]//a")
+	WebElement managefooterinfomore;
+	@FindBy(xpath = "//p[text()='Manage News']/ancestor::div[contains(@class,'small-box')]//a")
+	WebElement managenewsmoreinfo;
 	
 	
 
@@ -29,14 +39,41 @@ public class HomePage {
 
 	}
 
-	public void Admin() {
+	public AdminUserPage Admin() {
 		//clicks the Admin dropdown
 		Admin.click();
+		return new AdminUserPage(driver);
+	}
+	
+	public AdminUserPage AdminMoreInfo() {
+		adminmoreinfo.click();
+		return new AdminUserPage(driver);
+	}
+	
+	public ManageCategoryPage ManageCategorymoreinfo() {
+		managecategoryinfomore.click();
+		return new ManageCategoryPage(driver) ;
+	}
+	
+	
+	public ManageContactPage ManageContactmoreInfo() {
+		managecontactinfomore.click();
+		return new ManageContactPage(driver);
+
+	}
+	public ManageFooterPage ManageFootermoreInfo() {
+		managefooterinfomore.click();
+		return new ManageFooterPage(driver);
+	}
+	public ManageNewsPage ManageNewsMoreInfo() {
+		managenewsmoreinfo.click();
+		return new ManageNewsPage(driver);
 	}
 
-	public void logout() {
+	public LoginPage logout() {
 		//clicks the Logout link
 		logout.click();
+		return new LoginPage(driver);
 	}
 	
 	public boolean isSigninDisplayed() {

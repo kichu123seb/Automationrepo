@@ -16,8 +16,8 @@ public class ManageNewsPage {
 
 	@FindBy(xpath = "//section[@class='content']//p[text()='Manage News']")
 	WebElement managenews;
-	@FindBy(xpath = "//p[text()='Manage News']/ancestor::div[contains(@class,'small-box')]//a")
-	WebElement moreinfo;
+	//@FindBy(xpath = "//p[text()='Manage News']/ancestor::div[contains(@class,'small-box')]//a")
+	//WebElement managenewsmoreinfo;
 	@FindBy(xpath = "//a[@class='btn btn-rounded btn-danger']")
 	WebElement newbutton;
 	@FindBy(xpath = "//textarea[@class='form-control']")
@@ -37,21 +37,25 @@ public class ManageNewsPage {
 
 	}
 
-	public void MoreInfo() {
-		moreinfo.click();
-	}
+	/*public ManageNewsPage ManageNewsMoreInfo() {
+		managenewsmoreinfo.click();
+		return this;
+	}*/
 
-	public void NewButton() {
+	public ManageNewsPage NewButton() {
 		newbutton.click();
+		return this;
 
 	}
 
-	public void EnterText(String text) {
+	public ManageNewsPage EnterText(String text) {
 		textfield.sendKeys(text);
+		return this;
 	}
 
-	public void SaveButton() {
+	public ManageNewsPage SaveButton() {
 		savebutton.click();
+		return this;
 	}
 
 	public boolean isAlertDisplayed() {

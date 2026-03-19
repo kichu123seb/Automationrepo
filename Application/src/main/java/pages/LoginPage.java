@@ -29,19 +29,21 @@ public class LoginPage {
 		PageFactory.initElements(driver, this);
 	}
 
-	public void login(String user, String pass) {
+	/*public void login(String user, String pass) {
 		username1.sendKeys(user);
 		password1.sendKeys(pass);
 		signin.click();
-	}
+	}*/
 
-	public void EnterTheUserName(String username) {
+	public LoginPage EnterTheUserName(String username) {
 		username1.sendKeys(username);
+		return this;
 
 	}
 
-	public void EnterThePassword(String password) {
+	public LoginPage EnterThePassword(String password) {
 		password1.sendKeys(password);
+		return this;
 
 	}
 
@@ -49,8 +51,9 @@ public class LoginPage {
 	 * public void dropdown() { //PageUtility obj = new PageUtility();(if multiple
 	 * declare public) obj.dropDownVisibleText(element, text); }
 	 */
-	public void ClickOnSigninButton() {
+	public HomePage ClickOnSigninButton() {
 		signin.click();
+		return new HomePage(driver);
 	}
 
 	public boolean isDashBoardDisplayed() {

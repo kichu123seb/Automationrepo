@@ -5,11 +5,14 @@ import java.io.IOException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import pages.HomePage;
 import pages.LoginPage;
 import pages.ManageContactPage;
 import utilities.ExcelUtilities;
 
 public class ManageContactTest extends Base {
+	public HomePage homepage;
+	public ManageContactPage managecontactpage;
 	@Test(priority = 1, groups = {
 			"regression" }, description = "TestCase to upadte the email in the ManageContact page")
 
@@ -19,18 +22,23 @@ public class ManageContactTest extends Base {
 		String password = ExcelUtilities.getStringData(1, 1, "loginpage");
 
 		LoginPage loginpage = new LoginPage(getDriver());
-		ManageContactPage managecontact = new ManageContactPage(getDriver());
+		
+		homepage = loginpage.EnterTheUserName(username).EnterThePassword(password).ClickOnSigninButton();
+		//ManageContactPage managecontact = new ManageContactPage(getDriver());
 
-		loginpage.login(username, password);
+		/*loginpage.EnterTheUserName(username);
+		loginpage.EnterThePassword(password);
+		loginpage.ClickOnSigninButton();
+		Assert.assertTrue(managecontact.isManageContactDispalyed());*/
+		
+		managecontactpage = homepage.ManageContactmoreInfo().actionButton().updateEmail().upadte();
 
-		Assert.assertTrue(managecontact.isManageContactDispalyed());
-
-		managecontact.moreInfo();
+		/*managecontact.ManageContactmoreInfo();
 		managecontact.actionButton();
 		managecontact.updateEmail();
-		managecontact.upadte();
+		managecontact.upadte();*/
 
-		Assert.assertTrue(managecontact.isAlertDisplayed());
+		Assert.assertTrue(managecontactpage.isAlertDisplayed());
 
 	}
 

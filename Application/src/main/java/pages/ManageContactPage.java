@@ -21,8 +21,8 @@ public class ManageContactPage {
 
 	@FindBy(xpath = "//p[normalize-space()='Manage Contact']/ancestor::div[contains(@class,'small-box')]")
 	WebElement ManageContact;
-	@FindBy(xpath = "//p[normalize-space()='Manage Contact']/ancestor::div[contains(@class,'small-box')]//a")
-	WebElement managecontactinfomore;
+	//@FindBy(xpath = "//p[normalize-space()='Manage Contact']/ancestor::div[contains(@class,'small-box')]//a")
+	//WebElement managecontactinfomore;
 	@FindBy(xpath = "//a[@class='btn btn-sm btn btn-primary btncss']")
 	WebElement actionbutton;
 	@FindBy(xpath = "//input[@name='email']")
@@ -41,26 +41,30 @@ public class ManageContactPage {
 		return ManageContact.isDisplayed();
 	}
 
-	public void moreInfo() {
+	/*public ManageContactPage ManageContactmoreInfo() {
 		managecontactinfomore.click();
+		return this;
 
-	}
+	}*/
 
-	public void actionButton() {
+	public ManageContactPage actionButton() {
 		actionbutton.click();
+		return this;
 	}
 
-	public void updateEmail() {
+	public ManageContactPage updateEmail() {
 		emailfield.clear();
 		emailfield.sendKeys("kichu@123");
+		return this;
 	}
 
-	public void upadte() {
+	public ManageContactPage upadte() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.visibilityOf(upadatebutton));
 
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", upadatebutton);
 		wait.until(ExpectedConditions.elementToBeClickable(upadatebutton)).click();
+		return this;
 	}
 
 	public boolean isAlertDisplayed() {

@@ -8,7 +8,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import utilities.PageUtilities;
@@ -23,8 +22,8 @@ public class AdminUserPage {
 
 	@FindBy(xpath = "//p[normalize-space()='Admin Users']/ancestor::div[@class='small-box bg-info']")
 	WebElement AdminUsers;
-	@FindBy(xpath = "//p[normalize-space()='Admin Users']/ancestor::div[contains(@class,'small-box')]//a")
-	WebElement adminmoreinfo;
+	//@FindBy(xpath = "//p[normalize-space()='Admin Users']/ancestor::div[contains(@class,'small-box')]//a")
+	//WebElement adminmoreinfo;
 	@FindBy(xpath = "//a[@onclick='click_button(1)']")
 	WebElement adminnewbutton;
 	@FindBy(xpath = "//input[@id=\"username\"]")
@@ -47,34 +46,40 @@ public class AdminUserPage {
 		return AdminUsers.isDisplayed();
 	}
 
-	public void MoreInfo() {
+	/*public AdminUserPage AdminMoreInfo() {
 		adminmoreinfo.click();
-	}
+		return this;
+	}*/
 
-	public void NewButton() {
+	public AdminUserPage NewButton() {
 		adminnewbutton.click();
+		return this;
 
 	}
 
-	public void EnterText(String text) {
+	public AdminUserPage EnterText(String text) {
 		usernamefield.sendKeys(text);
+		return this;
 	}
 
-	public void EnterText1(String password) {
+	public AdminUserPage EnterText1(String password) {
 		passwordfield.sendKeys(password);
+		return this;
 	}
 
-	public void selectUserType(int index) {
-	    PageUtilities.selectByIndex(usertype, index);
+	public AdminUserPage selectUserType(int userType2) {
+	    PageUtilities.selectByIndex(usertype, userType2);
+	    return this;
 	}
 
-	public void SaveButton() {
+	public AdminUserPage SaveButton() {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 	    js.executeScript("arguments[0].scrollIntoView(true);", save);
 
 	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 	    wait.until(ExpectedConditions.elementToBeClickable(save));
 		save.click();
+		return this;
 
 	}
 

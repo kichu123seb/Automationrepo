@@ -5,50 +5,46 @@ import java.io.IOException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import pages.HomePage;
 import pages.LoginPage;
 import pages.ManageNewsPage;
 import utilities.ExcelUtilities;
 
 public class ManageNewsTest extends Base {
-	@Test(priority = 1, groups = { "regression" },description = "To enter new informations or news in the manage news Dashboard")
+	public HomePage homepage;
+	public ManageNewsPage managenewspage;
+
+	@Test(priority = 1, groups = {
+			"regression" }, description = "To enter new informations or news in the manage news Dashboard")
 	public void verifyTheUserIsAbleToCreateNews() throws IOException {
 
 		String username = ExcelUtilities.getStringData(1, 0, "loginpage");
 		String password = ExcelUtilities.getStringData(1, 1, "loginpage");
 
 		LoginPage loginpage = new LoginPage(getDriver());
-		ManageNewsPage managepage = new ManageNewsPage(getDriver());
+		homepage = loginpage.EnterTheUserName(username).EnterThePassword(password).ClickOnSigninButton();
+
+		// ManageNewsPage managepage = new ManageNewsPage(getDriver());
 
 		// Login
-		loginpage.login(username, password);
-		// Navigate to Manage News
-		managepage.MoreInfo();
-		managepage.NewButton();
+		/*
+		 * loginpage.EnterTheUserName(username); loginpage.EnterThePassword(password);
+		 * loginpage.ClickOnSigninButton();
+		 */
 
-		// Enter news
-		managepage.EnterText("Offer Closes Soon");
-		managepage.SaveButton();
+		// Navigate to Manage News
+
+		managenewspage = homepage.ManageNewsMoreInfo().NewButton().EnterText("Offer Closes Soon").SaveButton();
+
+		/*
+		 * managepage.ManageNewsMoreInfo(); managepage.NewButton();
+		 * 
+		 * // Enter news managepage.EnterText("Offer Closes Soon");
+		 * managepage.SaveButton();
+		 */
 
 		// Validate alert
-		Assert.assertTrue(managepage.isAlertDisplayed());
+		Assert.assertTrue(managenewspage.isAlertDisplayed());
 	}
-
-	/*
-	 * @Test(priority = 1,groups={"regression"}) public void
-	 * verifyTheUserIsAbleToLoginWithValidCredentials() throws IOException {
-	 * //String username = "admin"; //String password ="admin"; String username =
-	 * ExcelUtilities.getStringData(1, 0, "loginpage"); String password =
-	 * ExcelUtilities.getStringData(1, 1, "loginpage"); ManageNewsPage Managepage =
-	 * new ManageNewsPage(getDriver()); // Object creation
-	 * Managepage.EnterTheUserName(username); Managepage.EnterThePassword(password);
-	 * Managepage.ClickOnSigninButton(); boolean homepage =
-	 * Managepage.isMangeNewsDisplayed(); Assert.assertTrue(homepage); //boolean
-	 * homepage = loginpage.isDashBoardDisplayed(); //Assert.assertTrue(homepage);
-	 * //System.out.println(username); //System.out.println(password);
-	 * Managepage.MoreInfo(); Managepage.NewButton(); ManageNewsPage managePage =
-	 * new ManageNewsPage(getDriver()); managePage.EnterText("Offer Closes Soon");
-	 * managePage.SaveButton(); boolean homep = managePage.isAlertDisplayed();
-	 * Assert.assertTrue(homep);
-	 */
 
 }

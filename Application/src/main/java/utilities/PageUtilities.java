@@ -9,9 +9,9 @@ public class PageUtilities {
 		select.selectByVisibleText(text);
 	}
 
-	public static void selectByIndex(WebElement element, int index) {
+	public static void selectByIndex(WebElement element, int userType2) {
 		Select select = new Select(element);
-		select.selectByIndex(index);
+		select.selectByIndex(userType2);
 	}
 
 	public static void selectByValue(WebElement element, String value) {

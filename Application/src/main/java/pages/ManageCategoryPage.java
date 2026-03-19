@@ -24,8 +24,8 @@ public class ManageCategoryPage {
 
 	@FindBy(xpath = "//p[normalize-space()='Manage Category']/ancestor::div[contains(@class,'small-box')]")
 	WebElement ManageCategory;
-	@FindBy(xpath = "//p[normalize-space()='Manage Category']/ancestor::div[contains(@class,'small-box')]//a")
-	WebElement manageinfomore;
+	//@FindBy(xpath = "//p[normalize-space()='Manage Category']/ancestor::div[contains(@class,'small-box')]//a")
+	//WebElement managecategoryinfomore;
 	@FindBy(xpath = "//a[@class='btn btn-rounded btn-danger']")
 	WebElement managenew;
 	@FindBy(xpath = "//input[@name='category']")
@@ -51,41 +51,53 @@ public class ManageCategoryPage {
 		return ManageCategory.isDisplayed();
 	}
 
-	public void moreinfo() {
-		manageinfomore.click();
-	}
+	/*public ManageCategoryPage ManageCategorymoreinfo() {
+		managecategoryinfomore.click();
+		return this;
+	}*/
 
-	public void newbutton() {
+	public ManageCategoryPage newbutton() {
 		managenew.click();
+		return this;
 
 	}
 
-	public void enterCategory(String text) {
+	public ManageCategoryPage enterCategory(String text) {
 		entercategory.sendKeys(text);
+		return this;
 
 	}
 
-	public void discount() {
+	public ManageCategoryPage discount() {
 		discount.click();
+		return this;
 
 	}
 
-	public void fileInput() {
+	public ManageCategoryPage fileInput() {
 		FileUploadUtilities upload = new FileUploadUtilities();
 		upload.fileUploaduUsingSendKeys(fileinput, Constant.FILEINPUT);
+		return this;
 
 	}
 
-	public void savebutton() {
+	public ManageCategoryPage savebutton() {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].scrollIntoView(true);", save);
 
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.elementToBeClickable(save));
 		save.click();
+		return this;
 	}
 	public boolean isAlertDisplayed() {
-		return alert.isDisplayed();
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	    try {
+	        wait.until(ExpectedConditions.visibilityOf(alert));
+	        return alert.isDisplayed();
+	    } catch (Exception e) {
+	        return false;
+	    }
 	}
 
 }

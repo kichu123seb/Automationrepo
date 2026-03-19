@@ -16,8 +16,8 @@ public class ManageFooterPage {
 
 	@FindBy(xpath = "//p[normalize-space()='Manage Footer Text']/ancestor::div[contains(@class,'small-box')]")
 	WebElement ManageFooter;
-	@FindBy(xpath = "//p[normalize-space()='Manage Footer Text']/ancestor::div[contains(@class,'small-box')]//a")
-	WebElement managefooterinfomore;
+	//@FindBy(xpath = "//p[normalize-space()='Manage Footer Text']/ancestor::div[contains(@class,'small-box')]//a")
+	//WebElement managefooterinfomore;
 	@FindBy(xpath = "(//a[contains(@href,'Footertext/edit')])[1]")
 	WebElement managefootereditbutton;
 	@FindBy(xpath = "//textarea[@id='content']")
@@ -36,21 +36,25 @@ public class ManageFooterPage {
 		return ManageFooter.isDisplayed();
 	}
 
-	public void moreInfo() {
+	/*public ManageFooterPage ManageFootermoreInfo() {
 		managefooterinfomore.click();
-	}
+		return this;
+	}*/
 
-	public void idButton() {
+	public ManageFooterPage idButton() {
 		managefootereditbutton.click();
+		return this;
 	}
 
-	public void EnterText(String text) {
+	public ManageFooterPage EnterText(String text) {
 		addressfield.clear();
 		addressfield.sendKeys(text);
+		return this;
 	}
 
-	public void updateButton() {
+	public ManageFooterPage updateButton() {
 		updatebutton.click();
+		return this;
 	}
 
 	public boolean isAlertDisplayed() {
